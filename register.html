@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register a Course</title>
+    <link rel="stylesheet" href="register.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Kickstart Your Journey with an Exciting Course</h1>
+
+      
+      <form action="http://localhost:8080/courses/register" method="post">
+        <div class="form-group">
+          <label for="name">Enter Your Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="emailId">Enter Your Email ID</label>
+          <input
+            type="email"
+            id="emailId"
+            name="emailId"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="courseName">Choose a Course</label>
+          <select id="courseName" name="courseName" required>
+            <option value="" disabled selected>-- Select a course --</option>
+            <option value="Software Testing">Software Testing</option>
+            <option value="Software Development">Software Development</option>
+            <option value="Machine Learning">Machine Learning</option>
+          </select>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+  </body>
+</html>

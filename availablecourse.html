@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Available Courses</title>
+    <link rel="stylesheet" href="availablecourse.css" />
+  </head>
+  <body>
+    <div class="course-container">
+      <h1>Available Courses</h1>
+
+      <input
+        type="text"
+        id="searchBox"
+        placeholder="🔍 Search courses..."
+        onkeyup="searchCourses()"
+      />
+
+      <table id="courseTable">
+        <thead>
+          <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Trainer</th>
+            <th>Duration (Weeks)</th>
+          </tr>
+        </thead>
+        <tbody id="courseBody"></tbody>
+      </table>
+
+      <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <script>
+      async function loadCourses() {
+        const response = await fetch("http://localhost:8080/courses");
+        const courses = await response.json();
+
+        const tbody = document.getElementById("courseBody");
+        tbody.innerHTML = "";
+
+        courses.forEach((c) => {
+          const row = `<tr>
+              <td>${c.courseId}</td>
+              <td>${c.courseName}</td>
+              <td>${c.trainer}</td>
+              <td>${c.durationInWeeks}</td>
+            </tr>`
+          tbody.innerHTML += row;
+        });
+      }
+
+      function searchCourses() {
+        let input = document.getElementById("searchBox").value.toLowerCase();
+        let rows = document.querySelectorAll("#courseTable tbody tr");
+        rows.forEach((row) => {
+          let text = row.textContent.toLowerCase();
+          row.style.display = text.includes(input) ? "" : "none";
+        });
+      }
+
+      window.onload = loadCourses;
+    </script>
+  </body>
+</html>

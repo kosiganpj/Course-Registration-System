@@ -1,0 +1,134 @@
+/* ====== General Page Setup ====== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298, #76b2fe);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  min-height: 100vh;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Animate Gradient Background */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ====== Main Container ====== */
+.course-container {
+  width: 90%;
+  max-width: 950px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  padding: 40px 35px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.course-container:hover {
+  transform: scale(1.01);
+}
+
+/* ====== Header ====== */
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #f8faff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  letter-spacing: 1px;
+}
+
+/* ====== Search Box ====== */
+#searchBox {
+  width: 350px; /* reduced from 60% */
+  padding: 12px 16px;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  font-size: 1rem;
+  margin-bottom: 25px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+#searchBox::placeholder {
+  color: #e6e6e6;
+}
+
+#searchBox:focus {
+  background-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 8px #fff;
+}
+
+/* ====== Table Styling ====== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  margin-bottom: 35px; /* adds space before back button */
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+th {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #f9f9f9;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+tr {
+  transition: all 0.3s ease;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.01);
+}
+
+/* ====== Back Link ====== */
+.back-link {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(90deg, #2c5364, #203a43, #0f2027);
+  padding: 12px 30px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.back-link:hover {
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  box-shadow: 0 0 25px rgba(79, 172, 254, 0.6);
+  transform: translateY(-2px);
+}

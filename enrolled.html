@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enrolled Students</title>
+    <link rel="stylesheet" href="enrolled.css" />
+  </head>
+
+  <body>
+    <div class="enrolled-container">
+      <h1>🎓 Enrolled Students</h1>
+
+      <input
+        type="text"
+        id="searchBox"
+        placeholder="🔍 Search students..."
+        onkeyup="searchStudents()"
+      />
+
+      <table id="enrolledTable">
+        <thead>
+          <tr>
+            <th>Registration ID</th>
+            <th>Name</th>
+            <th>Email ID</th>
+            <th>Course Name</th>
+          </tr>
+        </thead>
+        <tbody id="enrolledBody"></tbody>
+      </table>
+
+      <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <script>
+      async function loadEnrolled() {
+        try {
+          const response = await fetch("http://localhost:8080/courses/enrolled");
+          const students = await response.json();
+
+          const tbody = document.getElementById("enrolledBody");
+          tbody.innerHTML = "";
+
+          students.forEach((s) => {
+            const row = `
+              <tr>
+                <td>${s.id}</td>
+                <td>${s.name}</td>
+                <td>${s.emailId}</td>
+                <td>${s.courseName}</td>
+              </tr>`;
+            tbody.innerHTML += row;
+          });
+        } catch (error) {
+          console.error("Error loading enrolled students:", error);
+        }
+      }
+
+      function searchStudents() {
+        const input = document.getElementById("searchBox").value.toLowerCase();
+        const rows = document.querySelectorAll("#enrolledTable tbody tr");
+
+        rows.forEach((row) => {
+          const text = row.textContent.toLowerCase();
+          row.style.display = text.includes(input) ? "" : "none";
+        });
+      }
+
+      window.onload = loadEnrolled;
+    </script>
+  </body>
+</html>

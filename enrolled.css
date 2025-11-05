@@ -1,0 +1,124 @@
+/* ===== General Page Setup ===== */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #003366, #0073e6, #66ccff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+  color: #fff;
+}
+
+/* ===== Container ===== */
+.enrolled-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  padding: 30px;
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* ===== Title ===== */
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* ===== Search Box ===== */
+#searchBox {
+  width: 40%;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+#searchBox:focus {
+  width: 50%;
+  box-shadow: 0 0 10px #fff;
+}
+
+/* ===== Table ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+  color: #000;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+th {
+  background: #004c99;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+tr:hover {
+  background-color: #f2f2f2;
+  transition: 0.3s;
+}
+
+/* ===== Back Button ===== */
+.back-link {
+  display: inline-block;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #0055cc, #0099ff);
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.back-link:hover {
+  background: linear-gradient(135deg, #0099ff, #00ccff);
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .enrolled-container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  #searchBox {
+    width: 70%;
+  }
+
+  #searchBox:focus {
+    width: 80%;
+  }
+
+  th, td {
+    font-size: 0.9rem;
+  }
+}
