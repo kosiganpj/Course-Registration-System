@@ -10,7 +10,8 @@
     <div class="form-container">
       <h1>Kickstart Your Journey with an Exciting Course</h1>
 
-      <form action="https://balanced-inspiration.up.railway.app/courses/register" method="post">
+      <!-- ✅ Fixed: Added /api before /courses/register -->
+      <form action="https://balanced-inspiration.up.railway.app/api/courses/register" method="post">
         <div class="form-group">
           <label for="name">Enter Your Name</label>
           <input type="text" id="name" name="name" placeholder="Enter your name" required />
@@ -38,4 +39,5 @@
     </div>
   </body>
 </html>
+
 
