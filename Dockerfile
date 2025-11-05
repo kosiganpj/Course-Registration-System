@@ -1,26 +1,24 @@
 # Use JDK 17
 FROM eclipse-temurin:17-jdk
 
-# Set working directory
 WORKDIR /app
 
-# Copy Maven wrapper and permissions
-COPY mvnw .
-COPY .mvn .mvn
+# Copy Maven wrapper and settings
+COPY CourseRegistrationSystem/mvnw .
+COPY CourseRegistrationSystem/.mvn .mvn
 RUN chmod +x mvnw
 
 # Copy pom.xml and download dependencies
-COPY pom.xml .
+COPY CourseRegistrationSystem/pom.xml .
 RUN ./mvnw dependency:go-offline -B
 
 # Copy source code
-COPY src src
+COPY CourseRegistrationSystem/src src
 
 # Build the application
 RUN ./mvnw clean package -DskipTests
 
-# Expose Spring Boot default port
 EXPOSE 8080
 
-# Run the JAR (auto-detects the jar file)
 ENTRYPOINT ["sh", "-c", "java -jar /app/target/*.jar"]
+
