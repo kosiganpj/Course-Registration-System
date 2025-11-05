@@ -35,10 +35,12 @@
     <script>
       async function loadEnrolled() {
         try {
-          // ✅ Updated API endpoint with /api prefix
-          const response = await fetch("https://balanced-inspiration.up.railway.app/api/courses/enrolled");
-          const students = await response.json();
+          const response = await fetch(
+            "https://course-registration-system-production-95ea.up.railway.app/courses/enrolled"
+          );
+          if (!response.ok) throw new Error("Failed to fetch enrolled students");
 
+          const students = await response.json();
           const tbody = document.getElementById("enrolledBody");
           tbody.innerHTML = "";
 
@@ -71,5 +73,6 @@
     </script>
   </body>
 </html>
+
 
 
