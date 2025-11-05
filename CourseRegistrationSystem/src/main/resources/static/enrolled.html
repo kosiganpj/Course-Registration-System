@@ -6,7 +6,6 @@
     <title>Enrolled Students</title>
     <link rel="stylesheet" href="enrolled.css" />
   </head>
-
   <body>
     <div class="enrolled-container">
       <h1>🎓 Enrolled Students</h1>
@@ -35,8 +34,8 @@
 
     <script>
       async function loadEnrolled() {
-        try {const response = await fetch("https://balanced-inspiration.up.railway.app/courses/enrolled");
-
+        try {
+          const response = await fetch("https://balanced-inspiration.up.railway.app/courses/enrolled");
           const students = await response.json();
 
           const tbody = document.getElementById("enrolledBody");
@@ -71,3 +70,4 @@
     </script>
   </body>
 </html>
+
