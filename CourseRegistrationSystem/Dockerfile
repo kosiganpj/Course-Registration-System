@@ -1,37 +1,26 @@
-# Use official JDK 17
+# Use JDK 17
 FROM eclipse-temurin:17-jdk
 
-# Set work directory
+# Set working directory
 WORKDIR /app
 
-# Copy Maven wrapper and config
+# Copy Maven wrapper files
 COPY mvnw .
 COPY .mvn .mvn
-
-# Make mvnw executable
 RUN chmod +x mvnw
 
-# Copy pom.xml
+# Copy pom.xml and download dependencies
 COPY pom.xml .
-
-# Download dependencies
 RUN ./mvnw dependency:go-offline -B
 
-# Copy source code
+# Copy the source code
 COPY src src
 
-# Build Spring Boot app
+# Build the application
 RUN ./mvnw clean package -DskipTests
 
-# Expose port 8080
+# Expose Spring Boot default port
 EXPOSE 8080
 
 # Run the app
-ENTRYPOINT ["java","-jar","target/*.jar"]
-
-
-
-
-
-
-
+ENTRYPOINT ["java", "-jar", "target/*.jar"]
