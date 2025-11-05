@@ -1,31 +1,34 @@
-# ✅ Use stable Java 17 base image
+# Use official JDK 17
 FROM eclipse-temurin:17-jdk
 
-# Set working directory inside container
+# Set work directory
 WORKDIR /app
 
-# Copy Maven wrapper and pom.xml first (for caching)
+# Copy Maven wrapper and config
 COPY mvnw .
 COPY .mvn .mvn
-COPY pom.xml .
 
-# Ensure the wrapper script is executable
+# Make mvnw executable
 RUN chmod +x mvnw
 
-# Download dependencies (this step is cached, speeds up rebuilds)
+# Copy pom.xml
+COPY pom.xml .
+
+# Download dependencies
 RUN ./mvnw dependency:go-offline -B
 
-# Copy the rest of your source code
+# Copy source code
 COPY src src
 
-# Build the Spring Boot JAR
+# Build Spring Boot app
 RUN ./mvnw clean package -DskipTests
 
-# Expose Spring Boot's default port
+# Expose port 8080
 EXPOSE 8080
 
-# Run the application
-CMD ["java", "-jar", "target/CourseRegistrationSystem-0.0.1-SNAPSHOT.jar"]
+# Run the app
+ENTRYPOINT ["java","-jar","target/*.jar"]
+
 
 
 
