@@ -4,24 +4,24 @@ FROM eclipse-temurin:17-jdk
 # Set working directory
 WORKDIR /app
 
-# Copy Maven wrapper and config files
+# Copy only the Spring Boot project files from the subfolder
 COPY CourseRegistrationSystem/mvnw .
 COPY CourseRegistrationSystem/.mvn .mvn
 RUN chmod +x mvnw
 
-# Copy pom.xml and download dependencies
 COPY CourseRegistrationSystem/pom.xml .
 RUN ./mvnw dependency:go-offline -B
 
-# Copy the source code
+# Copy the actual source code
 COPY CourseRegistrationSystem/src src
 
-# Build the Spring Boot application
+# Build the application
 RUN ./mvnw clean package -DskipTests
 
-# Expose Spring Boot default port
+# Expose port 8080
 EXPOSE 8080
 
-# Run the app
+# Run the JAR file
 ENTRYPOINT ["java", "-jar", "target/*.jar"]
+
 
