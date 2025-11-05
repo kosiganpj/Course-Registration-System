@@ -1,3 +1,4 @@
+
 package com.example.demo.controller;
 
 import com.example.demo.model.Course;
@@ -52,5 +53,6 @@ public class CourseController {
         return "🎓 Congratulations, " + name + "! You have successfully enrolled in " + courseName + ".";
     }
 }
+
 
 
