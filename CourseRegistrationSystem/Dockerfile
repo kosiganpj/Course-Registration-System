@@ -1,22 +1,18 @@
-# Use OpenJDK 17 as base image
-FROM openjdk:17-jdk-slim
+# Use stable Java 17 image
+FROM eclipse-temurin:17-jdk
 
 # Set working directory
 WORKDIR /app
 
-# Copy Maven files
-COPY mvnw .
-COPY .mvn .mvn
-COPY pom.xml .
+# Copy everything
+COPY . .
 
-# Preload dependencies
-RUN ./mvnw dependency:go-offline -B || apt-get update && apt-get install -y maven && mvn dependency:go-offline -B
+# Build the project (try Maven Wrapper first, then system Maven)
+RUN ./mvnw clean package -DskipTests || (apt-get update && apt-get install -y maven && mvn clean package -DskipTests)
 
-# Copy source
-COPY src ./src
-
-# Build JAR
-RUN ./mvnw clean package -DskipTests || mvn clean package -DskipTests
+# Expose the default Spring Boot port
+EXPOSE 8080
 
 # Run the app
 CMD ["java", "-jar", "target/CourseRegistrationSystem-0.0.1-SNAPSHOT.jar"]
+
